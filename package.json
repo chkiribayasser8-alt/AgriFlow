@@ -1,0 +1,29 @@
+{
+  "name": "agriflow",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@10.8.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:e2e": "npm run test:e2e --workspaces --if-present",
+    "format": "npm run format --workspaces --if-present",
+    "prepare": "husky install",
+    "db:migrate": "npm run db:migrate --workspace apps/api",
+    "start:dev": "npm run start:dev --workspace apps/api"
+  },
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md,html,css,scss,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}
